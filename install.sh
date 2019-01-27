@@ -6,8 +6,8 @@ echo
 
 echo "<<<<<<<<<<<<修改源地址>>>>>>>>>>>>>"
 sudo tee /etc/apt/sources.list <<-'EOF'
-#deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
-#deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
+deb-src http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi
 deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 deb-src http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
 #deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch main contrib non-free rpi
@@ -17,7 +17,7 @@ EOF
 sudo tee /etc/apt/sources.list.d/raspi.list <<-'EOF'
 #deb https://mirrors.tuna.tsinghua.edu.cn/raspberrypi/ stretch ui
 deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch ui
-#deb http://mirrors.aliyun.com/debian/ stretch ui
+deb http://mirrors.aliyun.com/debian/ ui
 EOF
 echo
 
@@ -42,9 +42,10 @@ sleep 1
 echo
 
 echo "`date +%H:%M:%S`>>>>>>>>>>添加 Docker CE 软件源<<<<<<<<<<"
-echo "deb [arch=armhf] https://download.docker.com/linux/debian \
+sudo tee /etc/apt/sources.list.d/docker.list <<-'EOF'
+"deb [arch=armhf] https://download.docker.com/linux/debian \
       $(lsb_release -cs) stable" | \
-     sudo tee /etc/apt/sources.list.d/docker.list
+EOF
 sleep 1
 echo
 
