@@ -42,10 +42,9 @@ sleep 1
 echo
 
 echo "`date +%H:%M:%S`>>>>>>>>>>添加 Docker CE 软件源<<<<<<<<<<"
-sudo tee /etc/apt/sources.list.d/docker.list <<-'EOF'
-"deb [arch=armhf] https://download.docker.com/linux/debian \
+echo "deb [arch=armhf] https://download.docker.com/linux/debian \
       $(lsb_release -cs) stable" | \
-EOF
+     sudo tee /etc/apt/sources.list.d/docker.list
 sleep 1
 echo
 
